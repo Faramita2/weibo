@@ -26,8 +26,8 @@
           <input class="form-control" type="password" name="password" value="{{ old('password') }}">
         </div>
         <div class="form-group">
-          <label for="password_confirmation">Name: </label>
-          <input class="form-control" type="text" name="password_confirmation" value="{{ old('password_confirmation') }}">
+          <label for="password_confirmation">Confirm password: </label>
+          <input class="form-control" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}">
         </div>
 
         <button type="submit" class="btn btn-primary">Sign up</button>
