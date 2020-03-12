@@ -8,6 +8,9 @@
       <h5>Sign up</h5>
     </div>
     <div class="card-body">
+
+      @include('shared._errors')
+
       <form action="{{ route('users.store') }}" method="POST">
         @csrf
         <div class="form-group">
