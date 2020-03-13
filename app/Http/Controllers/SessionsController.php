@@ -27,4 +27,11 @@ class SessionsController extends Controller
         session()->flash('danger', 'Incorrect email or password, please try again.');
         return redirect()->back()->withInput();
     }
+
+    public function destroy()
+    {
+        Auth::logout();
+        session()->flash('success', 'Log out successfully.');
+        return redirect('login');
+    }
 }
