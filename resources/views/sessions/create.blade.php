@@ -25,6 +25,13 @@
             <small id="Password" class="text-muted">Enter your password</small>
           </div>
 
+          <div class="form-group">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="remember" id="remember">
+              <label for="remember" class="form-check-label">Remember me</label>
+            </div>
+          </div>
+
           <button type="submit" class="btn btn-primary">Log in</button>
         </form>
 

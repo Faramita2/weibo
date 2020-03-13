@@ -19,7 +19,7 @@ class SessionsController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if (Auth::attempt($crenditials)) {
+        if (Auth::attempt($crenditials, $request->has('remember'))) {
             session()->flash('success', 'Welcome back!');
             return redirect()->route('users.show', ['user' => Auth()->user()]);
         }
