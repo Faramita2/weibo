@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store', 'index']
+            'except' => ['show', 'create', 'store', 'index', 'confirmEmail']
         ]);
     }
 
@@ -84,5 +84,19 @@ class UsersController extends Controller
         $user->delete();
         session()->flash('success', 'Delete user successfully!');
         return back();
+    }
+
+    public function confirmEmail($token)
+    {
+        $user = User::where('activation_token', $token)->firstOrFail();
+
+        $user->activated = true;
+        $user->activation_token = null;
+        $user->save();
+
+        Auth::login($user);
+        session()->flash('success', 'Congratulations! Activate successfully!');
+
+        return redirect()->route('users.show', compact('user'));
     }
 }
