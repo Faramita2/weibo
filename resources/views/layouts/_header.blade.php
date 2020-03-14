@@ -24,7 +24,9 @@
         </li>
       @endif
       <li class="nav-item"><a href="{{ route('help') }}" class="nav-link">Help</a></li>
-      <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Log in</a></li>
+      @if (!Auth::check())
+        <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Log in</a></li>
+      @endif
     </ul>
   </div>
 </nav>

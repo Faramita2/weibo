@@ -20,7 +20,7 @@
           </div>
 
           <div class="form-group">
-            <label for="password">Password: </label>
+            <label for="password">Password <a href="{{ route('password.request') }}">Forgot password</a></label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" aria-describedby="Password">
             <small id="Password" class="text-muted">Enter your password</small>
           </div>
