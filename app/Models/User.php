@@ -46,7 +46,7 @@ class User extends Authenticatable
         self::creating(function ($user) {
             $user->activation_token = Str::random(10);
 
-            Mail::to($user->email)->send(new NewUserActivation($user));
+            // Mail::to($user->email)->send(new NewUserActivation($user));
         });
     }
 
