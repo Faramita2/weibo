@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,14 @@ class StatusesController extends Controller
             'content' => $request->content
         ]);
         session()->flash('success', 'Publish new status successfully!');
+        return redirect()->back();
+    }
+
+    public function destroy(Status $status)
+    {
+        $this->authorize('destroy', $status);
+        $status->delete();
+        session()->flash('success', 'Delete successfully!');
         return redirect()->back();
     }
 }
