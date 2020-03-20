@@ -32,7 +32,7 @@ class UsersController extends Controller
         $statuses = $user->statuses()
             ->orderBy('created_at', 'desc')
             ->paginate(10);
-            
+
         return view('users.show', compact('user', 'statuses'));
     }
 
@@ -102,5 +102,19 @@ class UsersController extends Controller
         session()->flash('success', 'Congratulations! Activate successfully!');
 
         return redirect()->route('users.show', compact('user'));
+    }
+
+    public function followers(User $user)
+    {
+        $users = $user->followers()->paginate(10);
+        $title = $user->name . "'s followers";
+        return view('users.show_follow', compact('title', 'users'));
+    }
+
+    public function followings(User $user)
+    {
+        $users = $user->followings()->paginate(10);
+        $title = $user->name . "'s followings";
+        return view('users.show_follow', compact('title', 'users'));
     }
 }
